@@ -54,6 +54,7 @@ def data_check():
     data_checked = database_connection.try_connection.function_try_connect()
     return render_template('databasecheck.html',databool=data_checked)
 
+# this change should reflect
 @app.route('/fetch')
 def fetched_data():
     founddata = database_connection.do_something.fetch_data("Select * from expense;")
@@ -61,6 +62,6 @@ def fetched_data():
     query = '''Select sum(amount) from expense;'''
     total_karch = database_connection.do_something.fetch_data(query)
     return render_template('fetched.html',data=lenfounddata,founddata=founddata,karcha=total_karch[0][0])
-    
+
 if __name__ == '__main__':
     app.run('127.0.0.1','5050',debug=True)
