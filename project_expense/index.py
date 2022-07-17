@@ -59,9 +59,10 @@ def data_check():
 def fetched_data():
     founddata = database_connection.do_something.fetch_data("Select * from expense;")
     lenfounddata = len(founddata)
+    listocolumns = ['s_no','date','expense','amount']
     query = '''Select sum(amount) from expense;'''
     total_karch = database_connection.do_something.fetch_data(query)
-    return render_template('fetched.html',data=lenfounddata,founddata=founddata,karcha=total_karch[0][0])
+    return render_template('fetched.html',data=lenfounddata,founddata=founddata,karcha=total_karch[0][0],listocolumns=listocolumns)
 
 if __name__ == '__main__':
     app.run('127.0.0.1','5050',debug=True)
